@@ -11,12 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150102151941) do
+ActiveRecord::Schema.define(version: 20150102160258) do
 
   create_table "boards", force: :cascade do |t|
     t.string   "name"
     t.integer  "width"
     t.integer  "height"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tiles", force: :cascade do |t|
+    t.string   "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
