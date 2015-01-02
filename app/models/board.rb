@@ -1,3 +1,3 @@
 class Board < ActiveRecord::Base
-  store :tiles, accessors: [ :at ]
+  has_many :tiles
 end
