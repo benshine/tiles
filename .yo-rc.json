@@ -1,0 +1,12 @@
+{
+  "generator-backbone": {
+    "appPath": "app",
+    "appName": "Tiles",
+    "coffee": false,
+    "testFramework": "jasmine",
+    "templateFramework": "lodash",
+    "compassBootstrap": true,
+    "includeRequireJS": false
+  },
+  "generator-jasmine": {}
+}

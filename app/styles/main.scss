@@ -1,0 +1,25 @@
+$icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+
+@import 'bootstrap-sass-official/assets/stylesheets/bootstrap.scss';
+
+
+/* Space out content a bit */
+body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.tile-wrapper {
+  display: inline-block;
+  padding: 5px;
+}
+
+.tile {
+  height: 75px;
+  border-radius: 5px;
+  border: 1px solid #DDDDDD;
+}
+
+.controls {
+  padding-top: 10px;
+}
