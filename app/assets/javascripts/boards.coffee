@@ -10,6 +10,10 @@ toggleColor = (event) ->
 
 ready = ->
   $('.tile').click(toggleColor);
+  $(".edit_board").on("ajax:success", (e, data, status, xhr) ->
+    console.log("ajax:success with data", data, xhr)
+  ).on "ajax:error", (e, xhr, status, error) ->
+    console.log("ajax:error with error", error, xhr)
 
 $(document).ready(ready)
 $(document).on('page:load', ready)

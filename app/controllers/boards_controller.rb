@@ -44,6 +44,7 @@ class BoardsController < ApplicationController
     respond_to do |format|
       if @board.update(board_params) && @board.update_tiles(tile_colors_from_params)
         format.html { redirect_to @board, notice: 'Board was successfully updated.' }
+        format.js { render @board }
         format.json { render :show, status: :ok, location: @board }
       else
         format.html { render :edit }
