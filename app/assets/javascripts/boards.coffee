@@ -14,8 +14,12 @@ serializeTiles = ->
   ).join(',')
   $('#tile_colors').val(colors)
 
+resetBoard = ->
+  $('.tile').css('background-color', '#' + white);
+
 ready = ->
-  $('.tile').click(toggleColor);
+  $('.tile').click(toggleColor)
+  $('.reset').click(resetBoard)
   $(".edit_board").on("ajax:before", (params) ->
     serializeTiles()
   ).on("ajax:success", (e, data, status, xhr) ->
