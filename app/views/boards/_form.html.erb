@@ -1,4 +1,3 @@
-ajax submit? <%= ajax_submit %>
 <%= form_for(@board, remote: ajax_submit) do |f| %>
   <% if @board.errors.any? %>
     <div id="error_explanation">
