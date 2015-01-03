@@ -23,14 +23,9 @@
     <%= f.label :height %><br>
     <%= f.number_field :height %>
   </div>
-  <div class="field">
-    <%= f.label :created_at %><br>
-    <%= f.date_select :created_at %>
-  </div>
+  <%= text_area_tag('tile_colors', @board.tiles_as_list, style: "display: none") %>
 
-  <div class="field">
-    <%= text_area_tag('tile_colors', @board.tiles_as_list) %>
-  </div>
+  <%= render 'board' %>
 
   <div class="actions">
     <%= f.submit %>

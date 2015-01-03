@@ -1,0 +1,13 @@
+<div class="board">
+  <% tiles = @board.tiles %>
+  <% 0.upto(@board.height - 1) do |row| %>
+
+    <div class="row">
+      <% 0.upto(@board.width - 1) do |column| %>
+        <% tile = @board.tile_at(row, column) %>
+        <div class="tile" style="background-color: <%= tile.hex_color %>"></div>
+      <% end %>
+    </div>
+
+  <% end %>
+</div>
