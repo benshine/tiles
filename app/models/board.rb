@@ -1,7 +1,8 @@
 require 'color-generator'
 
 class Board < ActiveRecord::Base
-  has_many :tiles
+  has_many :tiles, dependent: :destroy
+
   DEFAULT_HEIGHT = 3
   DEFAULT_WIDTH = 4
 
