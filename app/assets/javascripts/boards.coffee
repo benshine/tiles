@@ -18,10 +18,19 @@ resetBoard = ->
   $('.tile').css('background-color', '#' + white)
 
 showSuccess = (operation) ->
-  alert(operation + ' was sucessful!')
+  $('#messages')
+    .show()
+    .html($('<div>').text(operation + ' was sucessful!'))
+    .delay(1000)
+    .fadeOut(500)
 
 showError = (operation) ->
-  alert(operation + ' failed')
+  $('#messages')
+    .show()
+    .html($('<div>').text(operation + ' failed!'))
+    .delay(1000)
+    .fadeOut(500)
+
 
 ready = ->
   $('.tile').click(toggleColor)
