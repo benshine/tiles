@@ -1,3 +1,11 @@
 // Place all the styles related to the Boards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.tile {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  border-radius: 3px;
+  border: 1px solid #CCCCCC;
+}
