@@ -26,6 +26,10 @@ ready = ->
     $('.tile').click(toggleColor);
   ).on "ajax:error", (e, xhr, status, error) ->
     console.log("ajax:error with error", error, xhr)
+  $('.new_board').on('ajax:success', (e, data, status, xhr) ->
+    console.log("ajax success for new board")
+  )
+
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
