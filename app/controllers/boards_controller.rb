@@ -25,6 +25,7 @@ class BoardsController < ApplicationController
   # POST /boards.json
   def create
     @board = Board.new(board_params)
+    @board.update_tiles(tile_colors_from_params)
 
     respond_to do |format|
       if @board.save
@@ -41,7 +42,7 @@ class BoardsController < ApplicationController
   # PATCH/PUT /boards/1.json
   def update
     respond_to do |format|
-      if @board.update(board_params)
+      if @board.update(board_params) && @board.update_tiles(tile_colors_from_params)
         format.html { redirect_to @board, notice: 'Board was successfully updated.' }
         format.json { render :show, status: :ok, location: @board }
       else
@@ -70,5 +71,9 @@ class BoardsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def board_params
       params.require(:board).permit(:name, :width, :height, :created_at)
+    end
+
+    def tile_colors_from_params
+      params[:tile_colors].split(',')
     end
 end

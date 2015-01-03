@@ -1,25 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @board.name %>
-</p>
-
-<p>
-  <strong>Width:</strong>
-  <%= @board.width %>
-</p>
-
-<p>
-  <strong>Height:</strong>
-  <%= @board.height %>
-</p>
-
-<p>
-  <strong>Created at:</strong>
-  <%= @board.created_at %>
-</p>
-
 <div class="board">
   <% tiles = @board.tiles %>
   <% 0.upto(@board.height - 1) do |row| %>
@@ -32,7 +12,7 @@
     </div>
 
   <% end %>
-  </div>
+</div>
 
-  <%= link_to 'Edit', edit_board_path(@board) %> |
-  <%= link_to 'Back', boards_path %>
+<%= link_to 'Edit', edit_board_path(@board) %> |
+<%= link_to 'Back', boards_path %>

@@ -27,6 +27,11 @@
     <%= f.label :created_at %><br>
     <%= f.date_select :created_at %>
   </div>
+
+  <div class="field">
+    <%= text_area_tag('tile_colors', @board.tiles_as_list) %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
