@@ -6,7 +6,7 @@ toggleColor = (event) ->
   if (currentColor == white)
     $(event.target).css('background-color', tinycolor.random())
   else
-    $(event.target).css('background-color', '#fff')
+    $(event.target).css('background-color', '#' + white)
 
 ready = ->
   $('.tile').click(toggleColor);

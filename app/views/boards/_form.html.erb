@@ -23,7 +23,8 @@
     <%= f.label :height %><br>
     <%= f.number_field :height %>
   </div>
-  <%= text_area_tag('tile_colors', @board.tiles_as_list, style: "display: none") %>
+
+  <%= hidden_field_tag('tile_colors', @board.tiles_as_list) %>
 
   <%= render 'board' %>
 
