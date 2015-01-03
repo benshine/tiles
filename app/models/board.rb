@@ -2,6 +2,16 @@ require 'color-generator'
 
 class Board < ActiveRecord::Base
   has_many :tiles
+  DEFAULT_HEIGHT = 3
+  DEFAULT_WIDTH = 4
+
+  after_initialize :create_defaults
+
+  def create_defaults
+    self.height = DEFAULT_HEIGHT
+    self.width = DEFAULT_WIDTH
+    create_tiles
+  end
 
   # Delete all the tiles we've got so far, then make new ones
   # based on the colors array passed in
