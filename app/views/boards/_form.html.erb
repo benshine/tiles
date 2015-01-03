@@ -25,7 +25,6 @@
   </div>
 
   <%= hidden_field_tag('tile_colors', @board.tiles_as_list) %>
-  <%= text_field_tag :show_link, url_for(@board).to_s %>
 
   <%= render 'board' %>
 

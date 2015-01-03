@@ -8,6 +8,7 @@ class Board < ActiveRecord::Base
   after_initialize :create_defaults
 
   def create_defaults
+    self.name = Faker::Lorem.word.capitalize
     self.height = DEFAULT_HEIGHT
     self.width = DEFAULT_WIDTH
     create_tiles
