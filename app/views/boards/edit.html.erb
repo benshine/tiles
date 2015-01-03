@@ -1,6 +1,9 @@
-<h1>Editing Board</h1>
-
-<%= render partial: 'form', locals: { ajax_submit: true } %>
-
+<%= render partial: 'form',
+     locals: {
+       ajax_submit: true,
+       show_board: true
+     }
+%>
+<p class="instructions">Click on a square to toggle it between white and a random color.</p>
 <%= link_to 'Show', @board %> |
-<%= link_to 'Back', boards_path %>
+<%= link_to 'All Boards', boards_path %>

@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= render 'board', locals: { ajax_submit: false } %>
+<%= render 'board', locals: { ajax_submit: false, show_board: true } %>
 
 <%= link_to 'Edit', edit_board_path(@board) %> |
 <%= link_to 'All Boards', boards_path %>

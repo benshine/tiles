@@ -5,9 +5,7 @@ class Board < ActiveRecord::Base
 
   DEFAULT_HEIGHT = 3
   DEFAULT_WIDTH = 4
-
-  after_initialize :create_defaults
-
+  
   def create_defaults
     self.name = Faker::Lorem.word.capitalize
     self.height = DEFAULT_HEIGHT

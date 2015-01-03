@@ -15,7 +15,13 @@ serializeTiles = ->
   $('#tile_colors').val(colors)
 
 resetBoard = ->
-  $('.tile').css('background-color', '#' + white);
+  $('.tile').css('background-color', '#' + white)
+
+showSuccess = (operation) ->
+  alert(operation + ' was sucessful!')
+
+showError = (operation) ->
+  alert(operation + ' failed')
 
 ready = ->
   $('.tile').click(toggleColor)
@@ -23,10 +29,13 @@ ready = ->
   $(".edit_board").on("ajax:before", (params) ->
     serializeTiles()
   ).on("ajax:success", (e, data, status, xhr) ->
+    showSuccess('Edit')
     $('.tile').click(toggleColor);
   ).on "ajax:error", (e, xhr, status, error) ->
     console.log("ajax:error with error", error, xhr)
+    showError('Edit')
   $('.new_board').on('ajax:success', (e, data, status, xhr) ->
+    showSuccess('Creation')
     console.log("ajax success for new board")
   )
 

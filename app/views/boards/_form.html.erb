@@ -26,10 +26,15 @@
 
   <%= hidden_field_tag('tile_colors', @board.tiles_as_list) %>
 
-  <%= render 'board' %>
+  <% if show_board %>
+    <%= render 'board' %>
+  <% end %>
 
   <div class="actions">
     <%= f.submit %>
-    <button type="button" class="reset">Reset</button>
+
+    <% if show_board %>
+      <button type="button" class="reset">All White!</button>
+    <% end %>
   </div>
 <% end %>
