@@ -1,15 +1,12 @@
 <div class="board row">
   <div class="twelve columns">
-  <% tiles = @board.tiles %>
   <% 0.upto(@board.height - 1) do |row| %>
-
-    <div class="row">
+    <div class="board-row">
       <% 0.upto(@board.width - 1) do |column| %>
         <% tile = @board.tile_at(row, column) %>
         <div class="tile" style="background-color: <%= tile.hex_color %>" data-row="<%= row %>" data-column="<%= column %>"></div>
       <% end %>
     </div>
-
   <% end %>
   </div>
 </div>

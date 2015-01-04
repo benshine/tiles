@@ -31,11 +31,11 @@
     <%= render 'board' %>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions row">
+    <%= f.submit class: 'four columns' %>
 
     <% if show_board %>
-      <button type="button" class="reset">All White!</button>
+      <button type="button" class="reset four columns">All White!</button>
     <% end %>
   </div>
 <% end %>

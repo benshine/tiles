@@ -22,17 +22,17 @@ resetBoard = ->
   $('.tile').css('background-color', '#' + white)
 
 showSuccess = (operation) ->
-  $('#messages')
+  $('#notice')
     .show()
-    .html($('<div>').text(operation + ' was sucessful!'))
+    .html($('<h6>').text(operation + ' succeeded').addClass('success'))
     .delay(1000)
     .fadeOut(500)
   $('input[name=commit]').val('Update Board').prop('disabled', false)
 
 showError = (operation) ->
-  $('#messages')
+  $('#notice')
     .show()
-    .html($('<div>').text(operation + ' failed!'))
+    .html($('<h3>').text(operation + ' failed!').addClass('error'))
     .delay(1000)
     .fadeOut(500)
   $('input[name=commit]').val('Update Board').prop('disabled', false)
@@ -44,7 +44,7 @@ ready = ->
   $(".edit_board").on("ajax:before", (params) ->
     beforeEditBoard()
   ).on("ajax:success", (e, data, status, xhr) ->
-    showSuccess('Edit')
+    showSuccess('Save')
     $('.tile').click(toggleColor);
   ).on "ajax:error", (e, xhr, status, error) ->
     console.log("ajax:error with error", error, xhr)

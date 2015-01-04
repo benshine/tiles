@@ -4,6 +4,15 @@
        show_board: true
      }
 %>
-<p class="instructions">Click on a square to toggle it between white and a random color.</p>
-<%= link_to 'Show', @board %> |
-<%= link_to 'All Boards', boards_path %>
+
+<div id="notice-container" class="row">
+  <!-- This container takes up space even when the notice is
+  not visible, so that we don't move the page contents vertically
+  when we show the notice -->
+
+  <p id="notice"><%= notice %></p>
+</div>
+
+<div class="row">
+  <%= link_to 'All Boards', boards_path %>
+</div>
