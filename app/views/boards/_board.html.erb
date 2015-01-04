@@ -6,11 +6,16 @@
   <% 0.upto(@board.height - 1) do |row| %>
     <div class="board-row">
       <% 0.upto(@board.width - 1) do |column| %>
-        <% tile = @board.tile_at(row, column) %>
-        <div class="tile" style="background-color: <%= tile.hex_color %>" data-row="<%= row %>" data-column="<%= column %>"></div>
+        <% color = @board.color_at(row, column) %>
+        <div class="tile" style="background-color: <%= color %>" data-row="<%= row %>" data-column="<%= column %>"></div>
       <% end %>
     </div>
   <% end %>
+  </div>
+
+  <h6>Tile colors:</h6>
+  <div class="tile-colors-output">
+    <%= @board.tile_colors %>
   </div>
 
   <div class="instructions twelve columns">Click on any square to change its color.</div>

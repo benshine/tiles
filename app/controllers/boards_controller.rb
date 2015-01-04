@@ -16,6 +16,7 @@ class BoardsController < ApplicationController
   def new
     @board = Board.new
     @board.create_defaults
+    @board.save
   end
 
   # GET /boards/1/edit
@@ -26,7 +27,7 @@ class BoardsController < ApplicationController
   # POST /boards.json
   def create
     @board = Board.new(board_params)
-    @board.update_tiles(tile_colors_from_params)
+    @board.create_or_update_colors(tile_colors_from_params)
 
     respond_to do |format|
       if @board.save
@@ -43,7 +44,7 @@ class BoardsController < ApplicationController
   # PATCH/PUT /boards/1.json
   def update
     respond_to do |format|
-      if @board.update(board_params) && @board.update_tiles(tile_colors_from_params)
+      if @board.update(board_params) && @board.create_or_update_colors(tile_colors_from_params)
         format.html { redirect_to @board, notice: 'Board was successfully updated.' }
         format.js { render @board.reload }
         format.json { render :show, status: :ok, location: @board }
