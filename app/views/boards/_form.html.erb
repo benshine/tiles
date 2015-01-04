@@ -1,4 +1,5 @@
 <%= form_for(@board, remote: ajax_submit) do |f| %>
+  <div class="row">
   <% if @board.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@board.errors.count, "error") %> prohibited this board from being saved:</h2>
@@ -10,18 +11,18 @@
       </ul>
     </div>
   <% end %>
+  </div>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="row">
+    <%= f.label 'Board name', class: 'two columns' %>
+    <%= f.text_field :name, class: 'six columns' %>
   </div>
-  <div class="field">
-    <%= f.label :width %><br>
-    <%= f.number_field :width %>
-  </div>
-  <div class="field">
-    <%= f.label :height %><br>
-    <%= f.number_field :height %>
+
+  <div class="row">
+    <%= f.label :width, class: 'two columns' %>
+    <%= f.number_field :width, class: 'two columns'  %>
+    <%= f.label :height, class: 'two columns'  %>
+    <%= f.number_field :height, class: 'two columns'  %>
   </div>
 
   <%= hidden_field_tag('tile_colors', @board.tiles_as_list) %>

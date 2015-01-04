@@ -8,6 +8,10 @@ toggleColor = (event) ->
   else
     $(event.target).css('background-color', '#' + white)
 
+beforeEditBoard = ->
+  serializeTiles()
+  $('input[name=commit]').val('...').prop('disabled', true)
+
 serializeTiles = ->
   colors = $.makeArray($('.tile')).map( (el) ->
     tinycolor($(el).css('background-color')).toHex()
@@ -23,6 +27,7 @@ showSuccess = (operation) ->
     .html($('<div>').text(operation + ' was sucessful!'))
     .delay(1000)
     .fadeOut(500)
+  $('input[name=commit]').val('Update Board').prop('disabled', false)
 
 showError = (operation) ->
   $('#messages')
@@ -30,13 +35,14 @@ showError = (operation) ->
     .html($('<div>').text(operation + ' failed!'))
     .delay(1000)
     .fadeOut(500)
+  $('input[name=commit]').val('Update Board').prop('disabled', false)
 
 
 ready = ->
   $('.tile').click(toggleColor)
   $('.reset').click(resetBoard)
   $(".edit_board").on("ajax:before", (params) ->
-    serializeTiles()
+    beforeEditBoard()
   ).on("ajax:success", (e, data, status, xhr) ->
     showSuccess('Edit')
     $('.tile').click(toggleColor);
