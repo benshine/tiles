@@ -37,8 +37,22 @@ showError = (operation) ->
     .fadeOut(500)
   $('input[name=commit]').val('Update Board').prop('disabled', false)
 
+sizeTiles = ->
+  console.log("sizeTiles")
+  rowWidth = $('.container').width()
+  boardWidth = $('.board').attr('data-width')
+  # Remove some for de facto padding
+  rowWidth = rowWidth - (10 * boardWidth)
+  if (boardWidth == 0)
+    boardWidth = 1
+  tileWidth = rowWidth / boardWidth
+  $('.tile').css('width', tileWidth + 'px')
+  $('.tile').css('height', tileWidth + 'px')
+  console.log('set it to ' + tileWidth)
 
 ready = ->
+  sizeTiles()
+  $(window).resize(sizeTiles)
   $('.tile').click(toggleColor)
   $('.reset').click(resetBoard)
   $(".edit_board").on("ajax:before", (params) ->
@@ -46,11 +60,13 @@ ready = ->
   ).on("ajax:success", (e, data, status, xhr) ->
     showSuccess('Save')
     $('.tile').click(toggleColor);
+    sizeTiles()
   ).on "ajax:error", (e, xhr, status, error) ->
     console.log("ajax:error with error", error, xhr)
     showError('Edit')
   $('.new_board').on('ajax:success', (e, data, status, xhr) ->
     showSuccess('Creation')
+    sizeTiles()
     console.log("ajax success for new board")
   )
 
