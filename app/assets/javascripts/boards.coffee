@@ -38,17 +38,19 @@ showError = (operation) ->
   $('input[name=commit]').val('Update Board').prop('disabled', false)
 
 sizeTiles = ->
-  console.log("sizeTiles")
   rowWidth = $('.container').width()
   boardWidth = $('.board').attr('data-width')
-  # Remove some for de facto padding
+  # Remove a bit for de facto padding caused by line breaks in html
   rowWidth = rowWidth - (10 * boardWidth)
   if (boardWidth == 0)
-    boardWidth = 1
-  tileWidth = rowWidth / boardWidth
+    boardWidth = 1 # don't divide by zero
+  # Tiles look silly when they're huge; clamp them below some max
+  tileWidth = Math.min(rowWidth / boardWidth, 75)
+  # I don't like that we're adding this to the dom over and over.
+  # TODO: write a css rule dynamically.
+  # See http://www.javascriptkit.com/dhtmltutors/externalcss3.shtml
   $('.tile').css('width', tileWidth + 'px')
   $('.tile').css('height', tileWidth + 'px')
-  console.log('set it to ' + tileWidth)
 
 ready = ->
   sizeTiles()
@@ -67,7 +69,6 @@ ready = ->
   $('.new_board').on('ajax:success', (e, data, status, xhr) ->
     showSuccess('Creation')
     sizeTiles()
-    console.log("ajax success for new board")
   )
 
 
