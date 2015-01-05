@@ -1,8 +1,6 @@
 require 'color-generator'
 
 class Board < ActiveRecord::Base
-  has_many :tiles, dependent: :destroy
-
   serialize :tile_colors, JSON
 
   DEFAULT_HEIGHT = 3

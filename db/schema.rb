@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150104163311) do
+ActiveRecord::Schema.define(version: 20150105004431) do
 
   create_table "boards", force: :cascade do |t|
     t.string   "name"
@@ -21,16 +21,5 @@ ActiveRecord::Schema.define(version: 20150104163311) do
     t.datetime "updated_at",  null: false
     t.text     "tile_colors"
   end
-
-  create_table "tiles", force: :cascade do |t|
-    t.string   "color"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "board_id"
-    t.integer  "row"
-    t.integer  "column"
-  end
-
-  add_index "tiles", ["board_id"], name: "index_tiles_on_board_id"
 
 end
