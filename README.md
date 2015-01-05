@@ -7,12 +7,15 @@ Tiles exercise by Benji Shine. (Second time, this time with Rails.)
 
 This is a Rails 4, Ruby 2.1.2 application that implements the tiles technical screen challenge.
 To run:
+
     bundle install
+    rake db:reset
     rails server
 
 Then go to [http://localhost:3000](http://localhost:3000)
 
-Note that the layout is responsive; it will work well on very small screens. 
+Made using [Skeleton](http://getskeleton.com/) for css and
+[TinyColor](https://github.com/bgrins/TinyColor) for client-side random color generation.
 
 ## Requirements
 
