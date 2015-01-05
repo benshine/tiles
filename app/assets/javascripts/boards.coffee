@@ -1,4 +1,5 @@
 white = "ffffff"
+max_tile_width = 150
 
 toggleColor = (event) ->
   $target = $(event.target)
@@ -43,7 +44,7 @@ sizeTiles = ->
   if (boardWidth == 0)
     boardWidth = 1 # don't divide by zero
   # Tiles look silly when they're huge; clamp them below some max
-  tileWidth = Math.min(rowWidth / boardWidth, 75)
+  tileWidth = Math.min(rowWidth / boardWidth, max_tile_width)
   # I don't like that we're adding this to the dom over and over.
   # TODO: write a css rule dynamically.
   # See http://www.javascriptkit.com/dhtmltutors/externalcss3.shtml
