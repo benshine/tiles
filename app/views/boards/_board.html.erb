@@ -7,7 +7,7 @@
     <div class="board-row">
       <% 0.upto(@board.width - 1) do |column| %>
         <% color = @board.color_at(row, column) %>
-        <div class="tile" style="background-color: <%= color %>" data-row="<%= row %>" data-column="<%= column %>"></div>
+        <div class="tile" style="background-color: #<%= color %>" data-row="<%= row %>" data-column="<%= column %>"></div>
       <% end %>
     </div>
   <% end %>

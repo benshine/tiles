@@ -6,15 +6,21 @@ class Board < ActiveRecord::Base
   DEFAULT_HEIGHT = 3
   DEFAULT_WIDTH = 4
   WHITE_AS_HEX = 'ffffff'
-  
-  def create_defaults
-    self.name = Faker::Lorem.word.capitalize
-    self.height = DEFAULT_HEIGHT
-    self.width = DEFAULT_WIDTH
-    self.tile_colors = Array.new(width * height, WHITE_AS_HEX)
+
+  after_initialize :my_initialize
+
+  def my_initialize
+    self.name ||= Faker::Lorem.word.capitalize
+    self.height ||= DEFAULT_HEIGHT
+    self.width ||= DEFAULT_WIDTH
+    self.tile_colors ||= Array.new(width * height, WHITE_AS_HEX)
   end
 
   def update_colors_from_params(colors_param)
+    required_colors = width * height
+    if (colors_param.count < required_colors)
+      colors_param.fill(WHITE_AS_HEX, -1, required_colors - colors_param.count + 1)
+    end
     self.tile_colors = colors_param
     self.save
   end
@@ -29,7 +35,7 @@ class Board < ActiveRecord::Base
 
   def color_at(row, column)
     if (columns.include?(column) && (rows.include?(row)))
-      '#' + tile_colors[index_for(row, column)]
+      tile_colors[index_for(row, column)]
     else
       raise RangeError.new("Row #{row}, column #{column} is outside the #{width} x #{height} bounds of the grid")
     end
