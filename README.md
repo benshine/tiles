@@ -55,8 +55,9 @@ And additionally include a save button that will persist the state of the board 
 
 ## Bonus:
 
- * Create a gallery of all boards which are viewable and editable by any user. **Not quite:
- I made an index, but I wouldn't call it a gallery:** [All Boards](http://localhost:3000/boards)
+ * Create a gallery of all boards which are viewable and editable by any user. **yep**
+
+ <img src="https://raw.githubusercontent.com/benshine/tiles/master/app/assets/images/gallery_screenshot.png?token=AABTZctcb4CnrHRqwnWJqNOecW0VBlC-ks5Us1jVwA%3D%3D">
 
 ## You will be judged on:
 
