@@ -21,7 +21,7 @@ class BoardsControllerTest < ActionController::TestCase
       post :create, board: { created_at: @board.created_at, height: @board.height, name: @board.name, width: @board.width }
     end
 
-    assert_redirected_to board_path(assigns(:board))
+    assert_redirected_to edit_board_path(assigns(:board))
   end
 
   test "should show board" do

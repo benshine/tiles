@@ -75,6 +75,6 @@ class BoardsController < ApplicationController
     end
 
     def tile_colors_from_params
-      params[:tile_colors].split(',')
+      (params[:tile_colors] || '').split(',')
     end
 end
