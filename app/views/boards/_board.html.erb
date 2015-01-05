@@ -1,13 +1,15 @@
 <div class="board row"
-     data-height="<%= @board.height %>"
-     data-width="<%= @board.width %>"
+  data-height="<%= @board.height %>"
+  data-width="<%= @board.width %>"
 >
   <div class="twelve columns">
   <% 0.upto(@board.height - 1) do |row| %>
     <div class="board-row">
       <% 0.upto(@board.width - 1) do |column| %>
         <% color = @board.color_at(row, column) %>
-        <div class="tile" style="background-color: #<%= color %>" data-row="<%= row %>" data-column="<%= column %>"></div>
+        <div class="tile" style="background-color: #<%= color %>"
+           data-row="<%= row %>" data-column="<%= column %>">
+        </div>
       <% end %>
     </div>
   <% end %>
