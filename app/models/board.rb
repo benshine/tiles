@@ -33,16 +33,11 @@ class Board < ActiveRecord::Base
   end
 
   def color_at(row, column)
-    puts("tile_colors: ", tile_colors)
     if (columns.include?(column) && (rows.include?(row)))
       '#' + tile_colors[index_for(row, column)]
     else
-      '#FF0000'
+      '#FF0000' # TODO: raise index out of bounds exception
     end
-  end
-
-  def tiles_as_list
-    tile_colors.join(',')
   end
 
   def index_for(row, column)
@@ -50,6 +45,6 @@ class Board < ActiveRecord::Base
   end
 
   def color_generator
-    @color_generator = @color_generator || ColorGenerator.new(saturation: 0.3, value: 1.0)
+    @color_generator = @color_generator || ColorGenerator.new(saturation: 0.5, value: 1.0)
   end
 end

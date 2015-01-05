@@ -33,8 +33,6 @@ showError = (operation) ->
   $('#notice')
     .show()
     .html($('<h3>').text(operation + ' failed!').addClass('error'))
-    .delay(1000)
-    .fadeOut(500)
   $('input[name=commit]').val('Update Board').prop('disabled', false)
 
 sizeTiles = ->
