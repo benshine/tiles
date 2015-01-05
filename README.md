@@ -1,11 +1,10 @@
 Tiles
 ====
 
-Tiles exercise by Benji Shine.
-
 ## Overview
 
-This is a Rails 4, Ruby 2.1.2 application that implements the tiles technical screen challenge.
+This is a Rails 4, Ruby 2.1.2 application that builds a grid of randomly-editable tiles. It's
+basically a programming exercise.
 
 To run it, clone this repo then:
 
@@ -15,7 +14,7 @@ To run it, clone this repo then:
 
 Then go to [http://localhost:3000](http://localhost:3000)
 
-When I did this in the three-hour window, I built a Backbone solution that implements the UI;
+First I tried this in a constrained time period of 3 hours, I built a Backbone solution that implements the UI;
 it is [on github, in another branch of this repo](https://github.com/benshine/tiles/tree/exercise-three-hours).
 I hadn't been doing any server-side coding lately, so I didn't complete that part of the exercise
 within the time limit. I took another shot at the exercise this weekend using rails, and I'm happier
@@ -23,6 +22,15 @@ with this solution.
 
 Most of the work is in the [board model](https://github.com/benshine/tiles/blob/master/app/models/board.rb)
 and the [front-end coffeescript](https://github.com/benshine/tiles/blob/master/app/assets/javascripts/boards.coffee)
+
+I serialized the tiles' current background color into a hidden input before saving them,
+and write the colors directly into inline styles when rendering the board on the server.
+
+I decided to store the tile colors as an array in a single column in the board table
+rather than having a separate Tile model class. The tiles don't need any behavior themselves,
+and if I stored them as separate objects I'd need to keep track of extra information: row and column,
+and which boards they are contained in. Using a single column in the boards table means that
+I don't have to keep track of row or column or board ownership; it's all implicit.
 
 The part of this that I am least happy with is how I scale the tiles to take the full
 width of their container. I do it like this:
@@ -58,19 +66,4 @@ And additionally include a save button that will persist the state of the board 
  * Create a gallery of all boards which are viewable and editable by any user. **yep**
 
  <img src="https://raw.githubusercontent.com/benshine/tiles/master/app/assets/images/gallery_screenshot.png?token=AABTZctcb4CnrHRqwnWJqNOecW0VBlC-ks5Us1jVwA%3D%3D">
-
-## You will be judged on:
-
- * Simplicity of solution
-
- * Best practices and idioms
-
- * Use of a framework or sensible data/view separation
-
- * Code quality, abstractions, and overall architecture
-
- * Look, feel, and UI embellishments.
-
-
-
 
