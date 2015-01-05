@@ -12,6 +12,7 @@ To run:
 
 Then go to [http://localhost:3000](http://localhost:3000)
 
+Note that the layout is responsive; it will work well on very small screens. 
 
 ## Requirements
 

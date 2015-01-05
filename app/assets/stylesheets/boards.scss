@@ -33,3 +33,10 @@
   color: #CCCCCC;
   font-size: smaller;;
 }
+
+// Don't show width and height controls on the editor
+// They are editable, but it's a bad user experience,
+// because the preview doesn't update
+.edit_board .width-height-controls {
+  display: none;
+}
