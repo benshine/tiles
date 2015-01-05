@@ -28,7 +28,7 @@
   <%= hidden_field_tag('tile_colors', @board.tile_colors.join(',')) %>
 
   <% if show_board %>
-    <%= render 'board' %>
+    <%= render partial: 'board', locals: { board: @board } %>
   <% end %>
 
   <div class="actions row">

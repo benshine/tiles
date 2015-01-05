@@ -16,6 +16,11 @@
   margin-top: 4rem;
 }
 
+.index .board {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
 .edit_board {
   margin-bottom: 0.5rem;
 }
@@ -38,5 +43,14 @@
 // They are editable, but it's a bad user experience,
 // because the preview doesn't update
 .edit_board .width-height-controls {
+  display: none;
+}
+
+.index .tile {
+  width: 15px;
+  height: 15px;
+}
+
+.index .instructions {
   display: none;
 }

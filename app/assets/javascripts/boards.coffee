@@ -48,13 +48,12 @@ sizeTiles = ->
   # I don't like that we're adding this to the dom over and over.
   # TODO: write a css rule dynamically.
   # See http://www.javascriptkit.com/dhtmltutors/externalcss3.shtml
-  $('.tile').css('width', tileWidth + 'px')
-  $('.tile').css('height', tileWidth + 'px')
+  $('form .tile').css('width', tileWidth + 'px').css('height', tileWidth + 'px')
 
 ready = ->
   sizeTiles()
   $(window).resize(sizeTiles)
-  $('.tile').click(toggleColor)
+  $('form .tile').click(toggleColor)
   $('.reset').click(resetBoard)
   $(".edit_board").on("ajax:before", (params) ->
     beforeEditBoard()
