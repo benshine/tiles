@@ -5,16 +5,13 @@ class Board < ActiveRecord::Base
 
   DEFAULT_HEIGHT = 3
   DEFAULT_WIDTH = 4
+  WHITE_AS_HEX = 'ffffff'
   
   def create_defaults
     self.name = Faker::Lorem.word.capitalize
     self.height = DEFAULT_HEIGHT
     self.width = DEFAULT_WIDTH
-    create_colors
-  end
-
-  def create_colors
-    self.tile_colors = Array.new(width * height) { |i| color_generator.create_hex }
+    self.tile_colors = Array.new(width * height, WHITE_AS_HEX)
   end
 
   def update_colors_from_params(colors_param)
