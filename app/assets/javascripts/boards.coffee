@@ -1,5 +1,5 @@
 white = "ffffff"
-max_tile_width = 150
+max_tile_width = 300
 
 toggleColor = (event) ->
   $target = $(event.target)
@@ -21,6 +21,11 @@ serializeTiles = ->
 
 resetBoard = ->
   $('.tile').css('background-color', '#' + white)
+
+randomColors= ->
+  $.makeArray($('.tile')).forEach((el) ->
+    $(el).css('background-color', tinycolor.random())
+  )
 
 showSuccess = (operation) ->
   $('#notice')
@@ -55,6 +60,7 @@ ready = ->
   $(window).resize(sizeTiles)
   $('form .tile').click(toggleColor)
   $('.reset').click(resetBoard)
+  $('.random').click(randomColors)
   $(".edit_board").on("ajax:before", (params) ->
     beforeEditBoard()
   ).on("ajax:success", (e, data, status, xhr) ->

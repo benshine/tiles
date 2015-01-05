@@ -32,10 +32,11 @@
   <% end %>
 
   <div class="actions row">
-    <%= f.submit class: 'four columns' %>
+    <%= f.submit class: 'four columns button-primary' %>
 
     <% if show_board %>
-      <button type="button" class="reset four columns">All White!</button>
+      <button type="button" class="reset four columns">White!</button>
+      <button type="button" class="random four columns">Random!</button>
     <% end %>
   </div>
 <% end %>
