@@ -36,7 +36,7 @@ class Board < ActiveRecord::Base
     if (columns.include?(column) && (rows.include?(row)))
       '#' + tile_colors[index_for(row, column)]
     else
-      '#FF0000' # TODO: raise index out of bounds exception
+      raise RangeError.new("Row #{row}, column #{column} is outside the #{width} x #{height} bounds of the grid")
     end
   end
 
