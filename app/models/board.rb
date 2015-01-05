@@ -12,22 +12,16 @@ class Board < ActiveRecord::Base
     self.name = Faker::Lorem.word.capitalize
     self.height = DEFAULT_HEIGHT
     self.width = DEFAULT_WIDTH
-    create_or_update_colors
+    create_colors
   end
 
-  def create_or_update_colors(colors_param = [])
-    new_colors = []
-    puts "hi?"
-    0.upto(height - 1) do |row|
-      puts "row #{row.to_s}"
-      0.upto(width - 1) do |column|
-        puts "um hi" + row.to_s + ", " + column.to_s
-        color = colors_param[index_for(row, column)]  || color_generator.create_hex
-        new_colors << color
-      end
-    end
-    self.tile_colors = new_colors
-    save
+  def create_colors
+    self.tile_colors = Array.new(width * height) { |i| color_generator.create_hex }
+  end
+
+  def update_colors_from_params(colors_param)
+    self.tile_colors = colors_param
+    self.save
   end
 
   def columns
@@ -48,7 +42,7 @@ class Board < ActiveRecord::Base
   end
 
   def tiles_as_list
-    tile_colors
+    tile_colors.join(',')
   end
 
   def index_for(row, column)
